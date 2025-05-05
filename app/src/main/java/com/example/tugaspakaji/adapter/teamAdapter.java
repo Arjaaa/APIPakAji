@@ -1,6 +1,5 @@
 package com.example.tugaspakaji.adapter;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.tugaspakaji.R;
 import com.example.tugaspakaji.model.Team;
-import com.example.tugaspakaji.R;
-import com.example.tugaspakaji.model.Team;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class teamAdapter extends RecyclerView.Adapter<teamAdapter.ViewHolder> {
@@ -25,7 +23,8 @@ public class teamAdapter extends RecyclerView.Adapter<teamAdapter.ViewHolder> {
 
     public teamAdapter(Context context, List<Team> teams) {
         this.context = context;
-        this.teams = teams;
+        // Hindari null dengan inisialisasi list kosong jika perlu
+        this.teams = (teams != null) ? teams : new ArrayList<>();
     }
 
     @Override
@@ -45,7 +44,7 @@ public class teamAdapter extends RecyclerView.Adapter<teamAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return teams.size();
+        return (teams != null) ? teams.size() : 0;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
